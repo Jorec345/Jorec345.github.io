@@ -96,7 +96,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://www.google.com/imgres?q=quants&imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fe3%2FQuants_logo.jpg&imgrefurl=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AQuants_logo.jpg&docid=Uk5bVGt4s-fQhM&tbnid=FoqcZuzvJDpDOM&vet=12ahUKEwj3r_qQ08GHAxWzyQIHHerrFmAQM3oECEYQAA..i&w=3138&h=1702&hcb=2&ved=2ahUKEwj3r_qQ08GHAxWzyQIHHerrFmAQM3oECEYQAA
+avatar: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.linkedin.com%2Fpulse%2Fbook-review-quants-stephen-maser&psig=AOvVaw3qE5vJiW2FdM2YXJghz0W0&ust=1721978286964000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMj9meLTwYcDFQAAAAAdAAAAABAE
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
