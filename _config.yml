@@ -96,7 +96,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.linkedin.com%2Fpulse%2Fbook-review-quants-stephen-maser&psig=AOvVaw3qE5vJiW2FdM2YXJghz0W0&ust=1721978286964000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMj9meLTwYcDFQAAAAAdAAAAABAE
+avatar: https://www.istockphoto.com/photo/online-education-concept-gm636332456-112833113?utm_campaign=srp_photos_70&utm_content=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fmaths%2F&utm_medium=affiliate&utm_source=pexels&utm_term=maths
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
