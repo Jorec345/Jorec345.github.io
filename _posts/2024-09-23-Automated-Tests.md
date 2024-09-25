@@ -2,12 +2,8 @@
 title: AUTOMATED TESTS AND TEST DRIVEN DEVELOPMENT
 categories: [ Documentation]
 tags: [Python, Pytests] # TAG names should always be lowercase
-image: https://dce0qyjkutl4h.cloudfront.net/wp-content/webp-express/webp-images/uploads/2017/11/qa-blog.jpg.webp
+image: 
 ---
-
-###### By: Akinyi Omondi
-## *AUTOMATED TESTS AND TEST DRIVEN DEVELOPMENT*
-
 
 ![][image_ref_0tnsjoib]
 
@@ -23,6 +19,7 @@ Automated tests ensure that code behaves as expected and code modifications or c
 
 ### Types of Automated Tests
 - **Unit Tests** These focus on checking the behavior of individuals units of a code such as function or methods
+
 ```python
 import unittest
 #The  function to be tested
@@ -45,6 +42,7 @@ class TestAddFunction(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 ```
+
 - **Intergration Tests** This focuses on checking the different units of code and how they work together correctly
 - **Functional Tests** Like the name, These focus on functionality of the software as a whole and check that it behaves as expected from the users perspective.
 - **Acceptance Tests** These tests are used to ensure that the software meets the requirements set out by the customer or end user. 
@@ -80,9 +78,9 @@ This process ensures that the code is written to meet the requirements specified
 - **Write a test**: The developer writes a test that describes the desired behavior of a small piece of code. This test should be automated and should be able to run quickly and easily.
 The test written should be a failing test
 For example 
+
 ```python
 assert add(1,1) == 2
-
 ```
 
 - **Run the test**: The developer runs the test and confirms that it fails, since the code that the test is testing does not yet exist.
@@ -93,6 +91,7 @@ This we do by defining the addition function
 def add(numOne, numTwo):
     return numOne + numTwo
 ```
+
 - **Run the test**: The developer runs the test again and confirms that it passes.
 *When we run the tests after writing the above code, the test passes because we have specified the function*
 - **Refactor the code**: The developer then refactors the code, if necessary, to make it more readable, maintainable, or efficient.
