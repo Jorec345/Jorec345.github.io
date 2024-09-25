@@ -1,7 +1,7 @@
 ---
 title: AUTOMATED TESTS AND TEST DRIVEN DEVELOPMENT
 categories: [ Documentation]
-tags: [Python, Pytests] # TAG names should always be lowercase
+tags: [python, pytests] # TAG names should always be lowercase
 image: 
 ---
 
