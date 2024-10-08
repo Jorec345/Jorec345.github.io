@@ -6,7 +6,8 @@ categories: [Monte Carlo Simulation, Forecasting]
 tags: [python,capital markets, forecasting]
 math: true
 canonical_url: https://www.innova.co.ke/monte-carlo-simulation-and-stock-prices-forecasting/
-useMath:true
+published: true
+useMath: true
 ---
 
 # **Monte Carlo Simulation and Stock Prices Forecasting** 
