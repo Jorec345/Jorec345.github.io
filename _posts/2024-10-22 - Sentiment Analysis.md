@@ -1,0 +1,161 @@
+---
+layout: post
+title: Sentiment Analysis
+date: 2024-10-22 00:00:00 +0300
+categories: [Python, Sentiment Analysis, Vectorization, NLP]
+tags: [Python,Machine Learning, Sentiment Analysis]
+useMath: true
+---
+# Sentiment analysis 
+### Introduction
+- Sentiment analysis also known as opinion analysis is a natural language processing technique used to predict feelings and opinion by determining the tone behind a specific text.
+- Sentiment analysis provides insights into public opinions, market trends and brand perception that can help a company or organization identify gaps or areas of improvement. 
+- In the case of financial markets, it can provide an investor with insights into the performance of certain stock or companies. 
+
+- Sentiment Analysis involves identification of the tone in a particular text or tweet and classifying it as positive, negative or neutral.
+
+- This kind of analysis can be performed at document level or individual sentence sentiment analysis.
+
+There are different steps involved in sentiment analysis:
+- Preprocessing the text data
+- Split the dataset
+- Vectorize the dataset
+- Data Conversion  
+- Label Encoding
+- Train a Neural Networks
+- Train the model
+- Evaluate the Model ( With Plotting)
+
+#### *To do sentiment analysis, you can use pretrained models such as Twitter-roberta-base-sentiment analyzer among others.*
+#### *However for this blog we will build our own sentiment analysis model*
+
+We will look at how to do sentiment analysis using Python libraries.
+
+The libraries in python commonly used for sentiment analysis are:
+1. *Natural Language ToolKit (NLTK)*: This a Python Library used for performing natural language processing tasks such as tokenization, stemming, lemmatization and sentiment analysis.
+    - *Tokenization*: This is the splitting of  paragraphs and sentences into smaller units that can be more easily assigned meaning. 
+    
+    For example:
+![][image_ref_0xbwsrq9]
+    
+    - *Stemming*: is a natural language processing technique that is used to reduce words to their base form e.g. the words 'run', 'running', and 'runs', all convert into the root word 'run’
+    
+    - *Lemmatization*: is another technique similar to stemming used to reduce inflected words to their root word.
+
+
+2. *TextBlob*: This is a Python library used for processing textual data. 
+
+
+3. *VADER (Valence Aware Dictionary and Sentiment Reasoner)*: This library is used for analyzing social media texts because of its ability to work well with short and informal texts. 
+
+4. *Hugging Face Transformers*: This provides pretrained models like BERT, RoBERTa among others which one can borrow from and fine tune to their specification. 
+
+
+
+*#Note: install the libraries first*
+```python
+pip install numpy pandas scikit-learn nltk
+
+```
+For this we used the tripadvisor hotel reviews from Kaggle
+
+```python
+import pandas as pd
+df = pd.read_csv('tripadvisor_hotel_reviews.csv')
+
+```
+*This dataset only has to variable that is review and rating*
+
+### 1. Data Cleaning and preprocessing
+As mentioned earlier the data only has two variables, there we will use the rating column to create a new variable which we will call *sentiment* and then encode is as a categorical variable where:
+- 0 - 1 will be encoded as negative sentiments and therefore given the number -1
+- 3 is in the middle and will therefore be encoded as 0, that is a neutral sentiment
+- 4 - 5 will be encoded as +1 which implies a positive sentiment
+
+This is executed through the following function
+```python
+import numpy as np
+
+def sentiment_encoding(rating):
+    
+    if rating==1 or rating==2:
+        return -1 # negative sentiment
+    elif rating==4 or rating==5:
+        return 1 # positive sentiment
+    else:
+        return 0 # neutral sentiment
+
+df['Sentiment'] = df['Rating'].apply(sentiment_encoding)
+```
+
+We then clean the review column to remove any stop words, punctuation and commas. 
+```python
+from sklearn.feature_extraction.text import re
+
+def clean_data(review):
+    
+    no_punc = re.sub(r'[^\w\s]', '', review)
+    no_digits = ''.join([i for i in no_punc if not i.isdigit()])
+    
+    return(no_digits)
+    
+df['Review'] = df['Review'].apply(clean_data)
+df['Review'][0]
+```
+
+### 2. Vectorization 
+
+For the data be ingested in our machine learning model, we will have to convert the text data into a numeric representation with the help of the scikit-learn's TF-IDF Vectorizer package. 
+
+Term frequency-inverse document frequency is used to tell the relevance of a word in a particular text or document. Therefore it converts word into a vector of numbers where each word has its own numeric representation. 
+
+TF-IDF conducts vectorization based on two criteria
+
+- Term Frequency: which is how many times a word or terms appears in a document
+- Inverse Document Frequency : this focuses on how many times a term has been repeated across a set of documents. 
+
+
+
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+VectorizeData = TfidfVectorizer(strip_accents=None, 
+                        lowercase=False,
+                        preprocessor=None)
+
+X = VectorizeData.fit_transform(df['Review'])
+```
+### 3. Building and evaluating the machine learning model
+
+*Training the model/ Train test split*
+```python
+
+from sklearn.model_selection import train_test_split
+y = df['Sentiment'] # target variable
+X_train, X_test, y_train, y_test = train_test_split(X,y)
+```
+Fit a logistic regression classifier to help make predictions
+
+```python
+from sklearn.linear_model import LogisticRegression
+lr = LogisticRegression(solver='liblinear')
+lr.fit(X_train,y_train) # fit the model
+preds = lr.predict(X_test) # make predictions
+```
+
+evaluation of performance
+```python
+from sklearn.metrics import accuracy_score
+accuracy_score(preds,y_test) # 0.86
+```
+### In conclusion
+Sentiment Analysis is important to companies and even business who seek to stay ahead of news or even improve their brand and decision making especially in the age of accelerating technological advancement.
+For example, when a company is launching a new product they can analyze thousands of tweeets to know how the market is responding to their new product and make adjustments where necessary to suit user needs.
+
+
+
+
+
+
+
+[image_ref_0xbwsrq9]: data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAeAB4AAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAFLAq8DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9PaKKK/JD0AooooAKKKKACuS+JHwl8G/GDRV0nxp4b0/xHYIxeOO+hDtEx6tG33kPupBrraKuMpQalF2aFvoz588N/wDBP79n3wnqyalYfDTT5LlHDqNQurm9iBByP3U8rp+G2voCGGO2hjhhjWKKNQiRoAFVQMAADoKfRWlXEVq7vVm5erb/ADEoqOyCiiisCgooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkZQ6lWAZSMEEZBpaKAPBpf2YdQ8O6pqEvw/+IWq+BtLv5POn0qCETwKx6mMF12cY9SMYzgADu/hH8GtH+EOm3iWc9xqeq6hJ52oatfNunun5OSewBLEDnqSSSc131Fd1TG4itT9lOd0SopO6Cs7xDoNt4n0a50u8lvYba4UK8mn309lOMEH5JoHSRDkdVYcZHQmtGiuJNp3RR4h4G/Yu+EXw18XDxR4Y0DU9G18yiaW+t/Euqbrht4ciYG5ImVmALJIGVv4gc17fRRWtStVrPmqycn5u4lFR2QUUUViMKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArz/4wfBHw78atJtbTWhPb3Fo5e2vrNgs0WcblBIIKsAMgjsD2r0CitKdSVKSnB2aFvowooorMYUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB43+09+0TZfs9+C47xYI7/xBqDNFptjISFZgBukfHOxMjOOSWUcZyPze8UftRfFXxZqUl5c+OdZs2Y/LFpl01nGg7KFiK8D3yfUmvZf+ClV7M/xl8PWbSMbeLQY50jzwrPcTqxA9xGv5V8j17+GpRjTUras46knzWO7/wCF9fE3/ooviz/weXX/AMco/wCF9fE3/ooviz/weXX/AMcrhKK67Iyuzu/+F9fE3/ooviz/AMHl1/8AHKP+F9fE3/ooviz/AMHl1/8AHK4SiiyC7O7/AOF9fE3/AKKL4s/8Hl1/8cqey/aG+KFhcxzx/ELxM7xncouNVmmTPursQfxFee0UWXYLs/R79jv9sS9+K2pL4M8ZtCfEfltJZajGgQXwUZdGQcCQDLfKACobgbfm+uq/Gn9nm9msPjx8PpIJGid9esoCynB2yTKjD8VYj8a/ZavExlONOScep10pOS1CiiiuA2CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD82P+ClH/ACXTQ/8AsXIP/Sm6r5Or6x/4KUf8l00P/sXIP/Sm6r5Or6Wj/Cj6HBU+JnVfC7wz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
