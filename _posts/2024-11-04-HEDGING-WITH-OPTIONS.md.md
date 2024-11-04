@@ -7,6 +7,7 @@ useMath:true
 ---
 
 # DERIVATIVES : HEDGING WITH OPTIONS
+
 ### Introduction
 Financial derivatives just from its name "*derivative*" is a financial instrument that derives its value from the performance of an underlying asset like stocks and other financial instruments
 
