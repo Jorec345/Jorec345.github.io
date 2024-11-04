@@ -1,8 +1,12 @@
 ---
+title: DERIVATIVES : HEDGING WITH OPTIONS
+categories: [ Documentation]
+tags: [capital markets, risk management]  
 math: true
 useMath:true
 ---
-# DERIVATIVES : *HEDGING WITH OPTIONS*
+
+# DERIVATIVES : HEDGING WITH OPTIONS
 ### Introduction
 Financial derivatives just from its name "*derivative*" is a financial instrument that derives its value from the performance of an underlying asset like stocks and other financial instruments
 
