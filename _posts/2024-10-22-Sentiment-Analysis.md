@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Sentiment Analysis
+title: SENTIMENT ANALYSIS
 date: 2024-10-22 00:00:00 +0300
 categories: [Python, Sentiment Analysis, Vectorization, NLP]
 tags: [Python,Machine Learning, Sentiment Analysis]

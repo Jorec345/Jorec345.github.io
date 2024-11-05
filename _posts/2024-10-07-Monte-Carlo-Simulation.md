@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Monte Carlo Simulation and Stock Prices Forecasting 
+title: MONTE CARLO SIMULATION AND STOCK PRICES FORECASTING 
 date: 2024-10-07 00:00:00 +0300
 categories: [Monte Carlo Simulation, Forecasting]
 tags: [python,capital markets, forecasting]

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: DERIVATIVES HEDGING WITH OPTIONS
+title: DERIVATIVES - HEDGING WITH OPTIONS
 categories: [ capital markets, risk management]
 tags: [capital markets, risk management]  
 math: true
