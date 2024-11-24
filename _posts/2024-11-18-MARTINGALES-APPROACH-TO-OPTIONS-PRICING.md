@@ -41,6 +41,7 @@ $$
 \mathbb{E}[X_{t+1} \mid \mathcal{I}_t] = X_t
 $$
 
+
 Where:
 - \(X_t\) represents the stochastic process at time \(t\).
 - \({I}_t\) denotes all available information at a particula time \(t\).
@@ -54,6 +55,7 @@ $$
    ]
 
 $$
+
    Where:
    - \(r\) is the risk-free interest rate.
    - \(S_T\) price of the asset at maturity.
