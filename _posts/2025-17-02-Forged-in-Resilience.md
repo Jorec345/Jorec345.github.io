@@ -3,7 +3,7 @@ layout: post
 title: Success Forged in Resilience
 categories: [Women in Tech]
 tags: [Technology]
-
+---
 ![][image_ref_qqwoedcg]---
 
 # Success Forged in Resilience
