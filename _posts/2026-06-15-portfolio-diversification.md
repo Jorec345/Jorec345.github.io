@@ -7,6 +7,7 @@ tags: [Economic modeling]
 ---
 ![][image_ref_0rh1x735]
 # The Art of Not Putting All Your Eggs in One Basket: A Guide to Portfolio Diversification
+
 ---
 ## What Is Diversification — and Why Should You Care?
 
@@ -14,10 +15,11 @@ There's an old saying in life and investing: *don't put all your eggs in one bas
 
 Diversification is the practice of spreading your investments across different assets so that no single loss can devastate your entire portfolio. It is not about chasing maximum returns but rather it is about managing risk intelligently while still participating in long-term wealth creation. It sounds easy but its often the most challenging thing for most investors.
 
-Done right, diversification is one of the few genuine "free lunches" in investing. I know they say there is no 'free lunch' but trust if you master this you can have a whole buffet.
+Done right, diversification is one of the few genuine "free lunches" in investing. I know they say there is no 'free lunch' but trust me if you master this you can have a whole buffet.
 
 
 ## The Core Principle: Correlation
+
 
 The secret behind diversification isn't just owning many things, it's owning things that **don't move together**.
 
